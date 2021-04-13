@@ -24,8 +24,8 @@
 
         <TextView
             android:id="@+id/forthPossibleAnswerTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:fontFamily="@font/kalam"
             android:textSize="14sp" />
     </androidx.cardview.widget.CardView>
@@ -47,8 +47,8 @@
 
         <TextView
             android:id="@+id/thirdPossibleAnswerTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:fontFamily="@font/kalam"
             android:textSize="14sp" />
     </androidx.cardview.widget.CardView>
@@ -70,8 +70,8 @@
 
         <TextView
             android:id="@+id/secondPossibleAnswerTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:fontFamily="@font/kalam"
             android:textSize="14sp" />
     </androidx.cardview.widget.CardView>
@@ -93,8 +93,8 @@
 
         <TextView
             android:id="@+id/firstPossibleAnswerTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:fontFamily="@font/kalam"
             android:textSize="14sp" />
     </androidx.cardview.widget.CardView>

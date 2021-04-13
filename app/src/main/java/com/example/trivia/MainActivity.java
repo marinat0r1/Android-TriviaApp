@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
        // Log.d("Main", "onCreate " + questionList);
     }
 
-    // Better attach onClick to CardViews instead of TextViews - possibleAnswers
+    // TODO: Attach onClick to CardViews instead of TextViews or both
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -96,9 +96,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void evaluateAnswer(TextView view) {
         if (checkAnswer(view.getText().toString())) {
-            System.out.println(true);
+            Toast.makeText(MainActivity.this, "Correct Answer!", Toast.LENGTH_SHORT ).show();
         } else {
-            System.out.println(false);
+            Toast.makeText(MainActivity.this, "Wrong Answer!", Toast.LENGTH_SHORT).show();
         }
     }
 
