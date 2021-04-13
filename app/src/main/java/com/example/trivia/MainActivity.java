@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.trivia.data.AnswerListAsyncResponse;
 import com.example.trivia.data.QuestionBank;
@@ -76,20 +77,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 updateCounterText();
                 break;
             case R.id.firstPossibleAnswerTextView:
-                //checkAnswer()
+                evaluateAnswer(possibleAnswer1TextView);
+
                 break;
             case R.id.secondPossibleAnswerTextView:
-                System.out.println("click2");
+                evaluateAnswer(possibleAnswer2TextView);
                 break;
             case R.id.thirdPossibleAnswerTextView:
-                
+                evaluateAnswer(possibleAnswer3TextView);
                 break;
             case R.id.forthPossibleAnswerTextView:
-                
+                evaluateAnswer(possibleAnswer4TextView);
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + v.getId());
         }
+    }
+
+    private void evaluateAnswer(TextView view) {
+        if (checkAnswer(view.getText().toString())) {
+            System.out.println(true);
+        } else {
+            System.out.println(false);
+        }
+    }
+
+    private boolean checkAnswer(String selectedAnswer) {
+        return questionList.get(currentIndexCounter).getCorrectAnswer().equals(selectedAnswer);
     }
 
     private void updateCounterText() {
