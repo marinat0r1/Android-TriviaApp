@@ -135,7 +135,8 @@
         android:layout_marginTop="24dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/triviaQuestionCardView"
-        app:srcCompat="@android:drawable/ic_media_previous" />
+        app:srcCompat="@android:drawable/ic_media_previous"
+        android:contentDescription="@string/previous_button_description" />
 
     <ImageButton
         android:id="@+id/nextQuestionImageButton"
@@ -145,7 +146,8 @@
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/triviaQuestionCardView"
-        app:srcCompat="@android:drawable/ic_media_next" />
+        app:srcCompat="@android:drawable/ic_media_next"
+        android:contentDescription="@string/next_button_description" />
 
     <TextView
         android:id="@+id/counterTextView"

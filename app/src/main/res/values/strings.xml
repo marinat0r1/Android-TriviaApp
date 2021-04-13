@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">Trivia</string>
     <string name="trivia_title">Trivia</string>
+    <string name="previous_button_description">previous question button</string>
+    <string name="next_button_description">next question button</string>
 </resources>
