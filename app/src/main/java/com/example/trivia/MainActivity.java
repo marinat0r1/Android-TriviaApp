@@ -1,10 +1,15 @@
 package com.example.trivia;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -97,8 +102,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void evaluateAnswer(TextView view) {
         if (checkAnswer(view.getText().toString())) {
             Toast.makeText(MainActivity.this, "Correct Answer!", Toast.LENGTH_SHORT ).show();
+            updateQuestion();
+            fadeView();
         } else {
             Toast.makeText(MainActivity.this, "Wrong Answer!", Toast.LENGTH_SHORT).show();
+            updateQuestion();
+            shakeAnimation();
         }
     }
 
@@ -130,6 +139,55 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (questionList.get(currentIndexCounter).getPossibleAnswers().size() >= 4) {
             possibleAnswer4TextView.setText(questionList.get(currentIndexCounter).getPossibleAnswers().get(3));
         }
+    }
 
+    private void shakeAnimation() {
+        Animation shake = AnimationUtils.loadAnimation(MainActivity.this, R.anim.shake_animation);
+        CardView cardView = findViewById(R.id.triviaQuestionCardView);
+        cardView.setAnimation(shake);
+
+        shake.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+                cardView.setCardBackgroundColor(Color.RED);
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                cardView.setCardBackgroundColor(Color.WHITE);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+    }
+
+    private void fadeView() {
+        AlphaAnimation alphaAnimation = new AlphaAnimation(1.0f, 0.0f);
+        CardView cardView = findViewById(R.id.triviaQuestionCardView);
+        cardView.setAnimation(alphaAnimation);
+
+        alphaAnimation.setDuration(350);
+        alphaAnimation.setRepeatCount(1);
+        alphaAnimation.setRepeatMode(Animation.REVERSE);
+
+        alphaAnimation.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+                cardView.setCardBackgroundColor(Color.GREEN);
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                cardView.setCardBackgroundColor(Color.WHITE);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
     }
 }
