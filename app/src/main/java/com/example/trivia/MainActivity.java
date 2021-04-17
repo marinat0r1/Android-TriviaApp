@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // TODO: Add Homescreen before Quiz
         setContentView(R.layout.activity_main);
 
         questionList = new QuestionBank().getQuestions(new AnswerListAsyncResponse() {
@@ -77,9 +78,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 break;
             case R.id.nextQuestionImageButton:
-                currentIndexCounter = (currentIndexCounter + 1) % questionList.size();
-                updateQuestion();
-                updateCounterText();
+                try {
+                    currentIndexCounter = (currentIndexCounter + 1) % questionList.size();
+                    updateQuestion();
+                    updateCounterText();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
                 break;
             case R.id.firstPossibleAnswerTextView:
                 evaluateAnswer(possibleAnswer1TextView);
@@ -101,11 +107,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void evaluateAnswer(TextView view) {
         if (checkAnswer(view.getText().toString())) {
-            Toast.makeText(MainActivity.this, "Correct Answer!", Toast.LENGTH_SHORT ).show();
+            //Toast.makeText(MainActivity.this, "Correct Answer!", Toast.LENGTH_SHORT ).show();
             updateQuestion();
             fadeView();
         } else {
-            Toast.makeText(MainActivity.this, "Wrong Answer!", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(MainActivity.this, "Wrong Answer!", Toast.LENGTH_SHORT).show();
             updateQuestion();
             shakeAnimation();
         }
